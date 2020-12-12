@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 
 #import Discord Token
-from api-credentials/token import TOKEN 
+from token import TOKEN 
 
 description = '''I am the Craziest Bot of them all!'''
 bot = commands.Bot(command_prefix='!crazy', description=description, help_command=None)
