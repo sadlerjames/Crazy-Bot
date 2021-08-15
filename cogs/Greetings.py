@@ -3,7 +3,6 @@ from discord.ext import commands
 from discord import FFmpegPCMAudio
 from discord import Member
 from discord.ext.commands import has_permissions, MissingPermissions
-import requests
 import json
 import os
 
