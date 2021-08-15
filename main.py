@@ -15,6 +15,15 @@ async def on_ready():
     print("The bot is now ready for use!")
     print("------------------------------")
 
+    #send a message to server
+    channel = client.get_channel(745026098001215540)
+    await channel.send("I've just had a good sleep, recharged the batteries and I'm now back online now")
+    #send meme inside embed message
+    embed = discord.Embed(title="")
+    embed.set_image(url="https://c.tenor.com/FI_r4cjN7w4AAAAC/bear-dance.gif")
+
+    await channel.send(embed=embed)
+
 
 initial_extensions = []
 
