@@ -1,33 +1,29 @@
-#import required dependicies
 import discord
 from discord.ext import commands
+import os
 
-#import Discord Token
-from apitoken import * 
+#import Bot Token
+from apikeys import *
 
-description = '''I am the Craziest Bot of them all!'''
-bot = commands.Bot(command_prefix='!crazy', description=description, help_command=None)
+intents = discord.Intents.default()
+intents.members = True
 
-@bot.event
+client = commands.Bot(command_prefix = '?', intents=intents)
+
+@client.event
 async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
+    print("The bot is now ready for use!")
+    print("------------------------------")
 
 
-@bot.command()
-async def hello(ctx):
-    await ctx.send("Hello, I am Crazy Bot, what can I do for you today?")
+initial_extensions = []
 
-@bot.command()
-async def help(ctx):
-    await ctx.send("""
-    Need help? No problem, I hear to assit you with all your needs.
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        initial_extensions.append("cogs." + filename[:-3])
 
-    What clever things am I able to do? Well not much but let me show you:    
-    """)
+if __name__ == '__main__':
+    for extension in initial_extensions:
+        client.load_extension(extension)
 
-
-
-bot.run(TOKEN)
+client.run(BOTTOKEN)

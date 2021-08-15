@@ -1,2 +1,3 @@
 # Crazy-Bot
-A discord python Bot
+
+A Python Discord Bot. Stay tuned for future updates
