@@ -12,7 +12,7 @@ class Fun(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    #event
+    #meme
     @commands.Cog.listener()
     async def on_message(self, message):
 
@@ -24,6 +24,20 @@ class Fun(commands.Cog):
             #send meme inside embed message
             embed = discord.Embed(title="")
             embed.set_image(url="https://c.tenor.com/jItxRf-KWosAAAAC/jeffrey-dean-morgan-smile.gif")
+            await message.channel.send(embed=embed)
+
+    #spider man
+    @commands.Cog.listener()
+    async def on_message(self, message):
+
+        if message.author == self.client.user:
+            return
+
+        print(message.content)
+
+        if ("spider-man" or "peter-parker" or "peter parker" or "spiderman" or "spider man" or "tobey maguire" or "tobey" or "tobeymaguire") in message.content:
+            embed = discord.Embed(title="")
+            embed.set_image(url="https://c.tenor.com/P8VsDwHZreYAAAAd/tobey-maguire-spider-man.gif")
             await message.channel.send(embed=embed)
 
 

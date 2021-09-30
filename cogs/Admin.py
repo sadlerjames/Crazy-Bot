@@ -35,29 +35,7 @@ class Admin(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You don't have permission to ban people!")
 
-    @commands.command()
-    @has_permissions(administrator=True)
-    async def unban(ctx, member: discord.Member, *, reason=None):
-        #not being run for somereason
-        banned_users = await ctx.guild.bans()
-        print(banned_users)
-        member_name, member_discriminator = member.split("#")
-        print(member_name)
-
-        for ban_entry in banned_users:
-            print(ban_entry)
-            user = ban_entry.user
-
-            if (user.name, user.discriminator) == (member_name, member_discriminator):
-                await ctx.guild.unban(user)
-                await ctx.send(f'Unbanned {user.mention}')
-                return
-
-    @unban.error
-    async def unban_error(ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-            await ctx.send("You don't have permission to ban people!")
-
+    
     @commands.command()
     async def manualWelcomeUser(ctx, user:discord.Member, *, message=None):
         message = "Welcome to the CrazyBoy server! It's great to have you here!"
